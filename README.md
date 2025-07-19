@@ -169,7 +169,7 @@ tagging it in the comment (`@aiprbot`).
 
 Example:
 
-> @SaundersBai Please generate a test plan for this file.
+> @aiprbot Please generate a test plan for this file.
 
 Note: A review comment is a comment made on a diff or a file in the pull
 request.
