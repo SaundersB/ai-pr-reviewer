@@ -1,13 +1,16 @@
 # AI-based PR reviewer and summarizer
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
 ## Overview
 
 `ai-pr-reviewer` is an AI-based code reviewer and summarizer for
 GitHub pull requests using OpenAI's `gpt-3.5-turbo` and `gpt-4.1` models. It is
 designed to be used as a GitHub Action and can be configured to run on every
 pull request and review comments
+
+## Acknowledgment
+This project is a fork of CodeRabbit/ai-pr-reviewer (originally developed by FluxNinja and Tao He).
+Substantial portions of the code were adapted from that project under the MIT License.
+This version includes significant modifications and enhancements by SaundersB.
 
 ## Reviewer Features:
 
@@ -43,6 +46,7 @@ FAQs, you can refer to the sections below.
 
 - [AI-based PR reviewer and summarizer](#ai-based-pr-reviewer-and-summarizer)
   - [Overview](#overview)
+  - [Acknowledgment](#acknowledgment)
   - [Reviewer Features:](#reviewer-features)
   - [Install instructions](#install-instructions)
       - [Environment variables](#environment-variables)
