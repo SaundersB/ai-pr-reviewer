@@ -91,7 +91,7 @@ jobs:
   review:
     runs-on: ubuntu-latest
     steps:
-      - uses: SaundersBai/ai-pr-reviewer@latest
+      - uses: SaundersB/ai-pr-reviewer@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
