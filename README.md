@@ -204,6 +204,10 @@ Build the typescript and package it for distribution
 $ npm run build && npm run package
 ```
 
+The compiled output in `dist/` is generated on demand and not tracked in git.
+Run these commands before publishing the action or referencing it from a
+workflow.
+
 ## FAQs
 
 ### Review pull requests from forks
