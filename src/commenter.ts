@@ -45,6 +45,17 @@ export const SHORT_SUMMARY_END_TAG = `-->
 export const COMMIT_ID_START_TAG = '<!-- commit_ids_reviewed_start -->'
 export const COMMIT_ID_END_TAG = '<!-- commit_ids_reviewed_end -->'
 
+export interface ReviewComment {
+  id: number
+  body: string
+  user: {login: string}
+  path?: string
+  line?: number | null
+  start_line?: number | null
+  diff_hunk?: string
+  in_reply_to_id?: number
+}
+
 export class Commenter {
   /**
    * @param mode Can be "create", "replace". Default is "replace".
@@ -364,7 +375,7 @@ ${statusMsg}
 
   async reviewCommentReply(
     pullNumber: number,
-    topLevelComment: any,
+    topLevelComment: ReviewComment,
     message: string
   ) {
     const reply = `${COMMENT_GREETING}
@@ -425,13 +436,14 @@ ${COMMENT_REPLY_TAG}
     path: string,
     startLine: number,
     endLine: number
-  ) {
+  ): Promise<ReviewComment[]> {
     const comments = await this.listReviewComments(pullNumber)
     return comments.filter(
-      (comment: any) =>
+      comment =>
         comment.path === path &&
         comment.body !== '' &&
-        ((comment.start_line !== undefined &&
+        ((comment.start_line != null &&
+          comment.line != null &&
           comment.start_line >= startLine &&
           comment.line <= endLine) ||
           (startLine === endLine && comment.line === endLine))
@@ -443,13 +455,14 @@ ${COMMENT_REPLY_TAG}
     path: string,
     startLine: number,
     endLine: number
-  ) {
+  ): Promise<ReviewComment[]> {
     const comments = await this.listReviewComments(pullNumber)
     return comments.filter(
-      (comment: any) =>
+      comment =>
         comment.path === path &&
         comment.body !== '' &&
-        ((comment.start_line !== undefined &&
+        ((comment.start_line != null &&
+          comment.line != null &&
           comment.start_line === startLine &&
           comment.line === endLine) ||
           (startLine === endLine && comment.line === endLine))
@@ -496,10 +509,13 @@ ${chain}
     return allChains
   }
 
-  async composeCommentChain(reviewComments: any[], topLevelComment: any) {
+  async composeCommentChain(
+    reviewComments: ReviewComment[],
+    topLevelComment: ReviewComment
+  ) {
     const conversationChain = reviewComments
-      .filter((cmt: any) => cmt.in_reply_to_id === topLevelComment.id)
-      .map((cmt: any) => `${cmt.user.login}: ${cmt.body}`)
+      .filter((cmt: ReviewComment) => cmt.in_reply_to_id === topLevelComment.id)
+      .map((cmt: ReviewComment) => `${cmt.user.login}: ${cmt.body}`)
 
     conversationChain.unshift(
       `${topLevelComment.user.login}: ${topLevelComment.body}`
@@ -508,7 +524,7 @@ ${chain}
     return conversationChain.join('\n---\n')
   }
 
-  async getCommentChain(pullNumber: number, comment: any) {
+  async getCommentChain(pullNumber: number, comment: ReviewComment) {
     try {
       const reviewComments = await this.listReviewComments(pullNumber)
       const topLevelComment = await this.getTopLevelComment(
@@ -529,12 +545,15 @@ ${chain}
     }
   }
 
-  async getTopLevelComment(reviewComments: any[], comment: any) {
+  async getTopLevelComment(
+    reviewComments: ReviewComment[],
+    comment: ReviewComment
+  ) {
     let topLevelComment = comment
 
     while (topLevelComment.in_reply_to_id) {
       const parentComment = reviewComments.find(
-        (cmt: any) => cmt.id === topLevelComment.in_reply_to_id
+        (cmt: ReviewComment) => cmt.id === topLevelComment.in_reply_to_id
       )
 
       if (parentComment) {
@@ -547,14 +566,14 @@ ${chain}
     return topLevelComment
   }
 
-  private reviewCommentsCache: Record<number, any[]> = {}
+  private reviewCommentsCache: Record<number, ReviewComment[]> = {}
 
-  async listReviewComments(target: number) {
+  async listReviewComments(target: number): Promise<ReviewComment[]> {
     if (this.reviewCommentsCache[target]) {
       return this.reviewCommentsCache[target]
     }
 
-    const allComments: any[] = []
+    const allComments: ReviewComment[] = []
     let page = 1
     try {
       for (;;) {

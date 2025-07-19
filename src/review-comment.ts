@@ -6,7 +6,8 @@ import {
   Commenter,
   COMMENT_REPLY_TAG,
   COMMENT_TAG,
-  SUMMARIZE_TAG
+  SUMMARIZE_TAG,
+  type ReviewComment
 } from './commenter'
 import {Inputs} from './inputs'
 import {octokit} from './octokit'
@@ -39,7 +40,7 @@ export const handleReviewComment = async (
     return
   }
 
-  const comment = context.payload.comment
+  const comment = context.payload.comment as ReviewComment
   if (comment == null) {
     warning(`Skipped: ${context.eventName} event is missing comment`)
     return
@@ -72,8 +73,8 @@ export const handleReviewComment = async (
     const pullNumber = context.payload.pull_request.number
 
     inputs.comment = `${comment.user.login}: ${comment.body}`
-    inputs.diff = comment.diff_hunk
-    inputs.filename = comment.path
+    inputs.diff = comment.diff_hunk ?? ''
+    inputs.filename = comment.path ?? ''
 
     const {chain: commentChain, topLevelComment} =
       await commenter.getCommentChain(pullNumber, comment)
