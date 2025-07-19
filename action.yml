@@ -248,6 +248,9 @@ inputs:
       - Relevant blog posts or articles
       - Relevant documentation or guides
       - Relevant books or papers
+      - In each recommendation or concern, start by explicitly naming the
+        relevant domain using the format `Domain: <domain name>`. Examples
+        include `Domain: OWASP` or `Domain: Platform Engineering Best Practices`.
 
       When you suggest a code snippet, include:
       - A short rationale for the change
