@@ -6,10 +6,22 @@ export class TokenLimits {
 
   constructor(model = 'gpt-3.5-turbo') {
     this.knowledgeCutOff = '2021-09-01'
-    if (model === 'gpt-4-32k') {
+    if (
+      model === 'gpt-4o' ||
+      model === 'gpt-4-1106-preview' ||
+      model === 'gpt-4-0125-preview' ||
+      model === 'gpt-4-turbo'
+    ) {
+      this.maxTokens = 128000
+      this.responseTokens = 4000
+    } else if (model === 'gpt-4-32k') {
       this.maxTokens = 32600
       this.responseTokens = 4000
-    } else if (model === 'gpt-3.5-turbo-16k') {
+    } else if (
+      model === 'gpt-3.5-turbo-16k' ||
+      model === 'gpt-3.5-turbo-1106' ||
+      model === 'gpt-3.5-turbo-0125'
+    ) {
       this.maxTokens = 16300
       this.responseTokens = 3000
     } else if (model === 'gpt-4') {
