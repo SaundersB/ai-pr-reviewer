@@ -1,4 +1,4 @@
-name: 'AI-based PR Reviewer & Summarizer with Chat Capabilities'
+name: 'AI-based PR Reviewer'
 description: 'AI-based PR Reviewer & Summarizer with Chat Capabilities'
 branding:
   icon: 'git-merge'
@@ -297,8 +297,8 @@ inputs:
     required: false
     description: 'The icon for the bot'
     default:
-      '<img src="https://avatars.githubusercontent.com/u/4874111?v=4"
-      alt="Image description" width="20" height="20">'
+      '<img src="https://avatars.githubusercontent.com/u/4874111?v=4" alt="Image
+      description" width="20" height="20">'
 runs:
   using: 'node16'
   main: 'dist/index.js'
