@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fluxninja/openai-pr-reviewer.git"
+    "url": "git+https://github.com/saundersb/openai-pr-reviewer.git"
   },
   "keywords": [
     "actions",

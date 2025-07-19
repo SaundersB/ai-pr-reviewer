@@ -22,7 +22,7 @@ import {getTokenCount} from './tokenizer'
 const context = github_context
 const repo = context.repo
 
-const ignoreKeyword = '@coderabbitai: ignore'
+const ignoreKeyword = '@SaundersBai: ignore'
 
 export const codeReview = async (
   lightBot: Bot,
@@ -430,7 +430,7 @@ ${filename}: ${summary}
     if (releaseNotesResponse === '') {
       info('release notes: nothing obtained from openai')
     } else {
-      let message = '### Summary by CodeRabbit\n\n'
+      let message = '### Summary by SaundersB\n\n'
       message += releaseNotesResponse
       try {
         await commenter.updateDescription(
@@ -461,11 +461,11 @@ ${SHORT_SUMMARY_END_TAG}
 ---
 
 <details>
-<summary>Uplevel your code reviews with CodeRabbit Pro</summary>
+<summary>Uplevel your code reviews with SaundersB Pro</summary>
 
-### CodeRabbit Pro
+### SaundersB Pro
 
-If you like this project, please support us by purchasing the [Pro version](https://coderabbit.ai). The Pro version has advanced context, superior noise reduction and several proprietary improvements compared to the open source version. Moreover, CodeRabbit Pro is free for open source projects.
+If you like this project, please support us by purchasing the [Pro version](https://SaundersB.ai). The Pro version has advanced context, superior noise reduction and several proprietary improvements compared to the open source version. Moreover, SaundersB Pro is free for open source projects.
 
 </details>
 `
@@ -723,16 +723,16 @@ ${
 <details>
 <summary>Tips</summary>
 
-### Chat with <img src="https://avatars.githubusercontent.com/in/347564?s=41&u=fad245b8b4c7254fe63dd4dcd4d662ace122757e&v=4" alt="Image description" width="20" height="20">  CodeRabbit Bot (\`@coderabbitai\`)
+### Chat with <img src="https://avatars.githubusercontent.com/in/347564?s=41&u=fad245b8b4c7254fe63dd4dcd4d662ace122757e&v=4" alt="Image description" width="20" height="20">  SaundersB Bot (\`@SaundersBai\`)
 - Reply on review comments left by this bot to ask follow-up questions. A review comment is a comment on a diff or a file.
-- Invite the bot into a review comment chain by tagging \`@coderabbitai\` in a reply.
+- Invite the bot into a review comment chain by tagging \`@SaundersBai\` in a reply.
 
 ### Code suggestions
 - The bot may make code suggestions, but please review them carefully before committing since the line number ranges may be misaligned. 
 - You can edit the comment made by the bot and manually tweak the suggestion if it is slightly off.
 
 ### Pausing incremental reviews
-- Add \`@coderabbitai: ignore\` anywhere in the PR description to pause further reviews from the bot.
+- Add \`@SaundersBai: ignore\` anywhere in the PR description to pause further reviews from the bot.
 
 </details>
 `
