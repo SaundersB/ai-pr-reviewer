@@ -49,10 +49,35 @@ export interface ReviewComment {
   id: number
   body: string
   user: {login: string}
+  /**
+   * The file path to which the comment applies.
+   * This field is present for comments on specific lines of a file in a pull request.
+   * It is undefined for general comments not tied to a specific file.
+   */
   path?: string
+  /**
+   * The line number in the file where the comment is made.
+   * This field is present for comments on a single line in a pull request.
+   * It is null for comments on a range of lines or undefined for general comments.
+   */
   line?: number | null
+  /**
+   * The starting line number of the range where the comment is made.
+   * This field is present for comments on a range of lines in a pull request.
+   * It is null for single-line comments or undefined for general comments.
+   */
   start_line?: number | null
+  /**
+   * The diff hunk to which the comment applies.
+   * This field is present for comments tied to a specific change in a pull request.
+   * It is undefined for general comments not tied to a specific change.
+   */
   diff_hunk?: string
+  /**
+   * The ID of the comment this comment is replying to.
+   * This field is present for reply comments.
+   * It is undefined for top-level comments.
+   */
   in_reply_to_id?: number
 }
 
