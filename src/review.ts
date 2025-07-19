@@ -459,15 +459,6 @@ ${inputs.shortSummary}
 ${SHORT_SUMMARY_END_TAG}
 
 ---
-
-<details>
-<summary>Uplevel your code reviews with SaundersB Pro</summary>
-
-### SaundersB Pro
-
-If you like this project, please support us by purchasing the [Pro version](https://SaundersB.ai). The Pro version has advanced context, superior noise reduction and several proprietary improvements compared to the open source version. Moreover, SaundersB Pro is free for open source projects.
-
-</details>
 `
 
   statusMsg += `
