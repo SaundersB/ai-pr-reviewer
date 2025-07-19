@@ -54,7 +54,6 @@ FAQs, you can refer to the sections below.
     - [Prompts \& Configuration](#prompts--configuration)
   - [Conversation with the Bot](#conversation-with-the-bot)
     - [Ignoring PRs](#ignoring-prs)
-  - [Examples](#examples)
   - [Contribute](#contribute)
     - [Developing](#developing)
   - [FAQs](#faqs)
@@ -124,8 +123,6 @@ day for a 20 developer team with `gpt-4` based review and commenting.
 
 ### Prompts & Configuration
 
-See: [action.yml](./action.yml)
-
 Tip: You can change the bot personality by configuring the `system_message`
 value. For example, to review docs/blog posts, you can use the following prompt:
 
@@ -184,17 +181,6 @@ To ignore a PR, add the following keyword in the PR description:
 @aiprbot: ignore
 ```
 
-## Examples
-
-Some of the reviews done by ai-pr-reviewer
-
-![PR Summary](./docs/images/PRSummary.png)
-
-![PR Release Notes](./docs/images/ReleaseNotes.png)
-
-![PR Review](./docs/images/section-1.png)
-
-![PR Conversation](./docs/images/section-3.png)
 
 Any suggestions or pull requests for improving the prompts are highly
 appreciated.
