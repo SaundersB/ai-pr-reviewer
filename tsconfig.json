@@ -7,13 +7,14 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "target": "ESNext",
-    "module": "ESNext",
-    "outDir": "./lib",
+    "target": "ES2022",
+    "module": "commonjs",
+    "outDir": "./build",
     "rootDir": "./src",
     "strict": true,
     "noImplicitAny": true,
     "esModuleInterop": true
   },
-  "exclude": ["dist", "lib", "node_modules", "**/*.test.ts"]
+  "include": ["src/**/*", "__tests__/**/*"],
+  "exclude": ["dist", "build", "node_modules", "**/*.test.ts"]
 }
