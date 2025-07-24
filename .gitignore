@@ -97,7 +97,6 @@ Thumbs.db
 # Ignore built ts files
 __tests__/runner/*
 build/**/*
-dist/
 
 ### Tags
 # Ignore tags created by etags, ctags, gtags (GNU global) and cscope
