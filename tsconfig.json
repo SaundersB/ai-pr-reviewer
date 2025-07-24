@@ -9,7 +9,7 @@
     "isolatedModules": true,
     "target": "ES2022",
     "module": "commonjs",
-    "outDir": "./build",
+    "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
     "noImplicitAny": true,

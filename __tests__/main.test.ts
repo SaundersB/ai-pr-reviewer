@@ -8,7 +8,7 @@ test('test runs', () => {
   process.env['GITHUB_TOKEN'] = 'test'
   process.env['GITHUB_REPOSITORY'] = 'owner/repo'
   const np = process.execPath
-  const ip = path.join(__dirname, '..', 'build', 'main.js')
+  const ip = path.join(__dirname, '..', 'dist', 'main.js')
   const options: cp.ExecFileSyncOptions = {
     env: process.env
   }
