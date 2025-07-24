@@ -301,4 +301,4 @@ inputs:
       description" width="20" height="20">'
 runs:
   using: 'node16'
-  main: 'dist/index.js'
+  main: 'dist/main.js'
