@@ -50,7 +50,7 @@ FAQs, you can refer to the sections below.
   - [Reviewer Features:](#reviewer-features)
   - [Install instructions](#install-instructions)
       - [Environment variables](#environment-variables)
-    - [Models: `gpt-4` and `gpt-3.5-turbo`](#models-gpt-4-and-gpt-35-turbo)
+    - [Models](#models)
     - [Prompts \& Configuration](#prompts--configuration)
   - [Conversation with the Bot](#conversation-with-the-bot)
     - [Ignoring PRs](#ignoring-prs)
@@ -111,15 +111,26 @@ jobs:
   OpenAI API if you have multiple. Please add this key to your GitHub Action
   secrets.
 
-### Models: `gpt-4` and `gpt-3.5-turbo`
+### Models
+
+This action relies on the official OpenAI chat completions API through the
+`chatgpt` package. Any model exposed by that API is supported. Commonly used
+options include:
+
+- `gpt-3.5-turbo` (4k context) and `gpt-3.5-turbo-16k`
+- `gpt-3.5-turbo-1106` and `gpt-3.5-turbo-0125`
+- `gpt-4` (8k context) and `gpt-4-32k`
+- `gpt-4-1106-preview` and `gpt-4-0125-preview` ("gpt-4-turbo")
+- `gpt-4o` (128k context)
 
 Recommend using `gpt-3.5-turbo` for lighter tasks such as summarizing the
-changes (`openai_light_model` in configuration) and `gpt-4` for more complex
-review and commenting tasks (`openai_heavy_model` in configuration).
+changes (`openai_light_model` in configuration) and `gpt-4` (or `gpt-4o`) for
+more complex review and commenting tasks (`openai_heavy_model` in
+configuration).
 
-Costs: `gpt-3.5-turbo` is dirt cheap. `gpt-4` is orders of magnitude more
-expensive, but the results are vastly superior. We are typically spending $20 a
-day for a 20 developer team with `gpt-4` based review and commenting.
+Costs: `gpt-3.5-turbo` is inexpensive. `gpt-4`/`gpt-4o` are more costly but the
+results are typically superior. Historically the Rabbit team spent about $20 a day for a 20
+developer team when using `gpt-4` based review and commenting.
 
 ### Prompts & Configuration
 
